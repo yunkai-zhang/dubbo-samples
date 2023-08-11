@@ -14,11 +14,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# 多启动的时候，要修改下面两个端口号
 dubbo:
   application:
     name: dubbo-springboot-demo-provider
+    # 1，下面三行另外指定QOS端口，是为了避免项目的不同模块启动后，与customer的QOS端口冲突。官网代码没有避免这个问题。[https://www.cnblogs.com/LiangPF/p/11552560.html]。这个报错不会影响功能，参考（https://blog.csdn.net/u012988901/article/details/84503672）的评论即我的实践
+    # 2，但是下面三行配置会导致报错“.BeanDefinitionStoreException: Invalid bean definition with name 'ServiceBean:org.apache.dubbo.springboot.demo.DemoService::'”，
+    # 所以注释掉了，之前一直找不到原因，对比基于源码修改过的地方，因为源码没有配置qos，所以注释掉后就没报错了
+#    qos-enable: true
+#    qos-port: 33334
+#    qos-accept-foreign-ip: false
   protocol:
     name: dubbo
-    port: -1
+    # 明确指明端口
+    port: 20881
+    # port: -1
   registry:
-    address: zookeeper://${zookeeper.address:127.0.0.1}:2181
+    # address: zookeeper://${zookeeper.address:127.0.0.1}:2181
+    address: zookeeper://127.0.0.1:2181

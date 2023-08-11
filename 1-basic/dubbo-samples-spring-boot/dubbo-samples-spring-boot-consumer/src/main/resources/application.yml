@@ -19,6 +19,10 @@ dubbo:
     name: dubbo-springboot-demo-consumer
   protocol:
     name: dubbo
-    port: -1
+    # port: -1
+    # 指明端口号，避免端口占用
+    port: 20880
   registry:
-    address: zookeeper://${zookeeper.address:127.0.0.1}:2181
+    # 这个
+    # address: zookeeper://${zookeeper.address:127.0.0.1}:2181
+    address: zookeeper://127.0.0.1:2181

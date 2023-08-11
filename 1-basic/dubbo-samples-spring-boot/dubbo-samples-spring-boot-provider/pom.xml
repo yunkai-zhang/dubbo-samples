@@ -28,6 +28,7 @@
     <artifactId>dubbo-samples-spring-boot-provider</artifactId>
 
     <dependencies>
+        <!--这里引入的就是本地的其他module，即接口module；服务者和消费者都要引入他-->
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-samples-spring-boot-interface</artifactId>

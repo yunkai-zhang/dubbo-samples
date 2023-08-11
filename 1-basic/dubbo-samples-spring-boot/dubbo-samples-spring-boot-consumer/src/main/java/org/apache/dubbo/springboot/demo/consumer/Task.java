@@ -25,7 +25,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Task implements CommandLineRunner {
-    @DubboReference
+    @DubboReference//类似springboot中的@Autowired，即注入实例
     private DemoService demoService;
 
     @Override
